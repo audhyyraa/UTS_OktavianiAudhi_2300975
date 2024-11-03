@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Data Penjual</title>
+</head>
+<body>
+    <header>Data Penjual</header>
+    <div class="container">
+        <h2>Daftar Penjual</h2>
+        
+        <!-- Form untuk menambah penjual baru -->
+        <form action="/sellers/add" method="POST">
+            <label for="name">Nama Penjual</label>
+            <input type="text" name="name" required>
+            <button type="submit">Tambah Penjual</button>
+        </form>
+
+        <!-- Tabel Data Penjual -->
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Aksi</th>
+            </tr>
+            <% sellers.forEach(seller => { %>
+                <tr>
+                    <td><%= seller.id %></td>
+                    <td><%= seller.name %></td>
+                    <td>
+                        <!-- Tombol Edit -->
+                        <form action="/sellers/edit/<%= seller.id %>" method="POST" style="display:inline;">
+                            <input type="text" name="name" value="<%= seller.name %>">
+                            <button type="submit">Edit</button>
+                        </form>
+                        
+                        <!-- Tombol Delete -->
+                        <form action="/sellers/delete/<%= seller.id %>" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+
+        <!-- Link Kembali ke Halaman Utama -->
+        <div style="margin-top: 20px;">
+            <a href="/" class="back-link">Kembali ke Halaman Utama</a>
+        </div>
+    </div>
+</body>
+</html>

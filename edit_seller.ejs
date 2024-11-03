@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Edit Penjual</title>
+</head>
+<body>
+    <header>Edit Data Penjual</header>
+    <div class="container">
+        <h2>Edit Penjual</h2>
+        <form action="/sellers/edit/<%= seller.id %>" method="POST">
+            <label for="name">Nama Penjual</label>
+            <input type="text" name="name" value="<%= seller.name %>" required>
+            <button type="submit">Simpan Perubahan</button>
+        </form>
+    </div>
+</body>
+</html>
